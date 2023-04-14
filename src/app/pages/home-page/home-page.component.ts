@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { IContact } from 'src/app/models/contact.inerface';
 
 @Component({
   selector: 'app-home-page',
@@ -7,13 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  contactoSeleccionado: IContact | undefined;
+  token: string | null = null;
   constructor( private router : Router) { // inyectamos Router
   }
   
   ngOnInit(): void {
+    //recibo el state 
+    this.token = sessionStorage.getItem('token');
+    if (history.state.data) {
+      this.contactoSeleccionado = history.state.data;
+    }
+    
   }
 
   handleNavContacts() : void{
-    this.router.navigate(['contacts'])
+    let navigationExtras : NavigationExtras={
+      queryParams:{
+        sexo:'todos'
+      }
+    }
+    this.router.navigate(['contacts'], navigationExtras)
   }
 }

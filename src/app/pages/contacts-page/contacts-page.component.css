@@ -1,0 +1,7 @@
+.contacto{
+      font-size: 20px;
+}
+.contacto:hover{
+      cursor: pointer;
+      color: tomato;
+}

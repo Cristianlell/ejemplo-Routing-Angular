@@ -1,7 +1,22 @@
 <h1>Home Page</h1>
 <h3>¡Bienvenido!</h3>
+<ng-container *ngIf="contactoSeleccionado; else elseAmigoInvisible">
+      <h4>Amigo invisible: {{contactoSeleccionado.nombre}}</h4>
+      
+</ng-container>
+<ng-template #elseAmigoInvisible>
+      <div>
+            <p>Selecciona a tu amigo invisible</p>
+      </div>
+</ng-template>
 
 <!-- Hacer un login -->
-<a routerLink="/login">Iniciar Sesión</a>
-<!-- <a [routerLink]="/login"></a> usamos [routerLink] para enviarle una variable del controlador--> 
+<a *ngIf="!token" routerLink="/login">Iniciar Sesión</a>
+<!-- <a [routerLink]="/login"></a> usamos [routerLink] para enviarle una variable del controlador --> 
+<div>
+      <p>Filtros:</p>
+      <a routerLink="/contacts" [queryParams]="{sexo:'mujer'}">Amigas | </a>
+      <a routerLink="/contacts" [queryParams]="{sexo:'hombre'}"> Amigos</a>
+</div>
+
 <button (click)="handleNavContacts()" >Ver tus contactos</button>

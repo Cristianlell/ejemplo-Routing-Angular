@@ -22,6 +22,7 @@ const routes: Routes = [
   {
     path:'home',
     component: HomePageComponent,
+    canActivate:[AuthGuard],
     //asi agregamos una lista de rutas hijas
     children:[
       {
