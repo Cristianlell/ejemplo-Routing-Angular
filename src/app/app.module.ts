@@ -8,7 +8,11 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { ContactsPageComponent } from './pages/contacts-page/contacts-page.component';
 import { ContactDetailPageComponent } from './pages/contact-detail-page/contact-detail-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { MaterialModule } from './modules/material/material.module';
+import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,20 @@ import { FormsModule } from '@angular/forms';
     NotFoundPageComponent,
     ContactsPageComponent,
     ContactDetailPageComponent,
+    LoginFormComponent,
+    NombreCompletoPipe,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    /* Formularios reactivos */
+    ReactiveFormsModule,
+    /* modulo personalizado de angular materia */
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,17 +8,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  email : string = "";
-  password:string = "";
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     let token = sessionStorage.getItem('token');
     if (token) this.router.navigate(['home']);
   }
-
-  loginUser() {
-    this.authService.login(this.email,this.password).subscribe(
+  /* 4)- Recibimos y usamos el evento */
+  loginUser(value : any) {
+/* eve.holt@reqres.in,"cityslicka" */
+    let {email,password} = value;
+    this.authService.login(email, password).subscribe(
       (res) => {
         if (res.token) {
           sessionStorage.setItem('token', res.token);

@@ -1,0 +1,35 @@
+<div ngClass="container-form">
+      <mat-card >
+            <mat-card-header>
+                  <mat-card-title>Login</mat-card-title>
+                  <mat-card-subtitle>Accede a tu cuenta</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                  <!-- Formulario de login -->
+                  <form [formGroup]="loginForm" (submit)="submitLogin()">
+                        <!-- Email -->
+                        <mat-form-field>
+                              <input matInput placeholder="Email" formControlName="email" />
+                              <mat-error *ngIf="email?.errors?.['required'] && email?.touched">
+                                    El campo email es obligatorio
+                              </mat-error>
+                              <mat-error *ngIf="email?.errors?.['email'] && email?.touched">
+                                    El formato email no es correcto
+                              </mat-error>
+                        </mat-form-field>
+                        <!-- Password -->
+                        <mat-form-field>
+                              <input matInput placeholder="Password" formControlName="password" />
+                              <mat-error *ngIf="password?.errors?.['required'] && password?.touched">
+                                    El campo password es obligatorio
+                              </mat-error>
+                        </mat-form-field>
+                        <!-- Botón para hacer submit -->
+                        <!-- Desabilitado si el formulario es invalido -->
+                        <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" >
+                              Enviar
+                        </button>
+                  </form>
+            </mat-card-content>
+      </mat-card>
+</div>
