@@ -1,0 +1,66 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Brian",
+        "last": "Bowman"
+      },
+      "location": {
+        "street": {
+          "number": 6149,
+          "name": "Rookery Road"
+        },
+        "city": "Tipperary",
+        "state": "Mayo",
+        "country": "Ireland",
+        "postcode": 92748,
+        "coordinates": {
+          "latitude": "3.7295",
+          "longitude": "-19.2598"
+        },
+        "timezone": {
+          "offset": "+5:00",
+          "description": "Ekaterinburg, Islamabad, Karachi, Tashkent"
+        }
+      },
+      "email": "brian.bowman@example.com",
+      "login": {
+        "uuid": "11a9be9e-d19b-4adb-a736-5f2cf7e5f769",
+        "username": "browngoose413",
+        "password": "jack1",
+        "salt": "2gJRQ2RN",
+        "md5": "344a132dddad98fee57051b9feca7ae3",
+        "sha1": "a71ecafd24746b2a5fad0928255fdbbbca72cd0d",
+        "sha256": "55865f62405a23099eb870a787ee1d2d46d20465b6a2bf420c72761bf8fb2096"
+      },
+      "dob": {
+        "date": "1999-11-10T19:33:56.672Z",
+        "age": 23
+      },
+      "registered": {
+        "date": "2004-10-29T14:43:20.429Z",
+        "age": 18
+      },
+      "phone": "071-483-9445",
+      "cell": "081-936-0247",
+      "id": {
+        "name": "PPS",
+        "value": "4098637T"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/80.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/80.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/80.jpg"
+      },
+      "nat": "IE"
+    }
+  ],
+  "info": {
+    "seed": "7f5a2e9e494770fa",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}

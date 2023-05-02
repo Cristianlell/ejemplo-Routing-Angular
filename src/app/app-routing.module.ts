@@ -6,6 +6,7 @@ import { ContactsPageComponent } from './pages/contacts-page/contacts-page.compo
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { RandomContactPageComponent } from './pages/random-contact-page/random-contact-page.component';
 
 const routes: Routes = [
   //le especificamos que si
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path:'contacts/:id', //Sub ruta de contacts
     component: ContactDetailPageComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path:'random',
+    component:RandomContactPageComponent,
     canActivate:[AuthGuard]
   },
   {
