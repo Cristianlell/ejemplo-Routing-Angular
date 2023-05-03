@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IContact } from 'src/app/models/contact.inerface';
+import { IRandomContact } from 'src/app/models/randomUser';
 
 @Component({
   selector: 'app-contact-detail-page',
@@ -9,13 +9,7 @@ import { IContact } from 'src/app/models/contact.inerface';
 })
 export class ContactDetailPageComponent implements OnInit {
   id: any | undefined;
-  contact: IContact={
-    id:1,
-    nombre:"",
-    email:"",
-    apellido:"",
-    sexo:""
-  };
+  contact: IRandomContact | undefined;
   filtro:string = "";
 
   constructor(private route: ActivatedRoute) {}

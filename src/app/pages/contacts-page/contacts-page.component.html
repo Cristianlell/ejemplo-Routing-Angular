@@ -1,14 +1,14 @@
 <h1>Tus Contactos: </h1>
 
-<div *ngFor="let contact of contactos; let i=index" >
-      <div routerLink="{{contact.id}}" [state]="{contact, filtro: filtroSexo}"> <!-- tambien se puede enviar el state directamente -->
-            <h6 class="contacto">{{contact.nombre}} </h6>
+<div *ngFor="let contact of listaContactos; let i=index" >
+      <div routerLink="{{contact.id.name}}" [state]="{contact, filtro: filtroSexo}"> <!-- tambien se puede enviar el state directamente -->
+            <h6 class="contacto">{{contact | nombreCompleto}} </h6>
             <button (click)="irAHome(contact)">Seleccionar como amigo invisible</button>            
       </div>
 </div>
 
 
-<ng-container *ngIf="filtroSexo == 'mujer' || filtroSexo == 'hombre'; else filtradoSexo">
+<ng-container *ngIf="filtroSexo == 'female' || filtroSexo == 'male'; else filtradoSexo">
       <p>Mostrando filtro: <b>{{filtroSexo}}</b></p>
 </ng-container>
 <ng-template #filtradoSexo>

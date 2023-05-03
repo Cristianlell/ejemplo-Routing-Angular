@@ -5,7 +5,7 @@ import {
   HttpParams,
 } from '@angular/common/http';
 import { Observable, throwError, catchError, retry } from 'rxjs';
-import { IRandomContact, Results } from '../models/randomUser';
+import { IRandomContact, Results} from '../models/randomUser';
 
 @Injectable({
   providedIn: 'root',
@@ -34,17 +34,17 @@ export class RandomUserService {
     );
   }
 
-  obtenerRandomContacts(n: number): Observable<Results[]> {
-    let params: HttpParams = new HttpParams().set('result', n);
-    return this.http.get<Results[]>('https://randomuser.me/api',{params} ).pipe(
-      retry(2), // reintentamos 2 veces la peticion
-      catchError(this.handleError) // emitimos el error
-    );
-  }
+  obtenerRandomContacts(n: number,sexo?:string): Observable<Results> {
 
-  obtenerRandomContactsPorGenero(genero: string) : Observable<Results[]>{
-    let params: HttpParams = new HttpParams().set('genre', genero);
-    return this.http.get<Results[]>('https://randomuser.me/api',{params} ).pipe(
+    let params: HttpParams = new HttpParams().set('results', n);
+    if (sexo) {
+      params = params.append('gender',sexo);
+    }
+
+    console.log(params);
+    
+    
+    return this.http.get<Results>('https://randomuser.me/api',{params} ).pipe(
       retry(2), // reintentamos 2 veces la peticion
       catchError(this.handleError) // emitimos el error
     );

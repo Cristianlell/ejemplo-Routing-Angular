@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { IContact } from 'src/app/models/contact.inerface';
+import { IRandomContact } from 'src/app/models/randomUser';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +8,7 @@ import { IContact } from 'src/app/models/contact.inerface';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  contactoSeleccionado: IContact | undefined;
+  contactoSeleccionado: IRandomContact | undefined;
   token: string | null = null;
   constructor( private router : Router) { // inyectamos Router
   }
@@ -18,8 +18,7 @@ export class HomePageComponent implements OnInit {
     this.token = sessionStorage.getItem('token');
     if (history.state.data) {
       this.contactoSeleccionado = history.state.data;
-    }
-    
+    }    
   }
 
   handleNavContacts() : void{

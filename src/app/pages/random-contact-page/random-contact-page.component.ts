@@ -27,11 +27,12 @@ export class RandomContactPageComponent implements OnInit {
       complete: () => console.info('Petición de random contact terminada'),
     });
   }
-
+  listaContactos:IRandomContact[] = []
   obtenerListaContactos(n: number) {
     this.randomUserService.obtenerRandomContacts(n).subscribe({
-      next: (res: Results[]) => {
-        console.log(res)
+      next: (res: Results) => {
+       this.listaContactos = res.results
+        console.log(this.listaContactos)
       },
       error: (error) => console.error(error),
       complete: () => console.info('Petición de random contacts terminada'),

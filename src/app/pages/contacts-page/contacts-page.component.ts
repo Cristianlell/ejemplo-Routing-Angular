@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IContact } from 'src/app/models/contact.inerface';
-import { ContactService } from 'src/app/services/contact.service';
+import { IRandomContact, Results } from '../../models/randomUser';
+import { RandomUserService } from 'src/app/services/random-user.service';
 
 @Component({
   selector: 'app-contacts-page',
@@ -10,33 +11,43 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactsPageComponent implements OnInit {
   filtroSexo: string = 'todos';
-  contactos: IContact[] = [];
+  listaContactos: IRandomContact[] = [];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private contactService: ContactService
+    private randomUserService: RandomUserService
   ) {}
 
   ngOnInit(): void {
     // Obtenemos las query params
-    this.route.queryParams.subscribe(
-      (params: any) => {
-        if (params.sexo) {
-          this.filtroSexo = params.sexo
-        }
+    this.route.queryParams.subscribe((params: any) => {
+      if (params.sexo === 'female' || params.sexo === 'male') {
+        this.filtroSexo = params.sexo;
+        //implementamos lista de contacto por genero
+        this.randomUserService.obtenerRandomContacts(10, params.sexo).subscribe({
+          next: (res: Results) => {
+            this.listaContactos = res.results;
+            console.log(this.listaContactos);
+          },
+          error: (error) => console.error(error),
+          complete: () => console.info('Petición de random contacts terminada'),
+        });
+      } else {
+        //implementamos lista de contacto aleatoria
+        this.randomUserService.obtenerRandomContacts(10).subscribe({
+          next: (res: Results) => {
+            this.listaContactos = res.results;
+            console.log(this.listaContactos);
+          },
+          error: (error) => console.error(error),
+          complete: () => console.info('Petición de random contacts terminada'),
+        });
       }
-    );
-    //filtramos
-    this.contactService
-      .obtenerContactos(this.filtroSexo)
-      .then((res) => (this.contactos = res))
-      .catch((err) => console.error("ha habido un error: ",err))
-      .finally(() => console.info("Petición de contacto terminada")
-      );
+    });
   }
 
-  irAHome(contact: IContact) {
+  irAHome(contact: IRandomContact) {
     this.router.navigate(['home'], { state: { data: contact } });
   }
 }
