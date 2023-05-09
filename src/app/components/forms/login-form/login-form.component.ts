@@ -36,7 +36,6 @@ export class LoginFormComponent implements OnInit {
 
   submitLogin(){
     if (this.loginForm.valid) {
-      console.table(this.loginForm.value)
       /* 2)- Emitimos o enviamos los valores que recibira el componente padre */
       this.loginAction.emit(this.loginForm.value);
       this.loginForm.reset()
