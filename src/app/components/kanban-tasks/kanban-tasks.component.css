@@ -1,3 +1,4 @@
+
 .container {
   width: 400px;
   max-width: 100%;
@@ -25,6 +26,10 @@
   font-size: 14px;
 }
 
+.completed-task{
+  background-color: aliceblue ;
+} 
+
 .list-item:last-child {
   border: none;
 }
@@ -51,3 +56,13 @@
   opacity: 0;
 }
 
+
+.completado {
+  color: rgb(138, 255, 71);
+  font-weight: bold;
+}
+
+.incompleto {
+  color: tomato;
+  font-weight: bold;
+}

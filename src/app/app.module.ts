@@ -26,6 +26,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
 import { KanbanTasksComponent } from './components/kanban-tasks/kanban-tasks.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TaskComponent } from './components/task/task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DashboardComponent,
     NavComponent,
     TasksPageComponent,
-    KanbanTasksComponent
+    KanbanTasksComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
